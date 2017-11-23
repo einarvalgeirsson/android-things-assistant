@@ -67,7 +67,10 @@ class ThingsAssistant(
     }
 
     fun destroy() {
-        assistantThread.quitSafely()
+        with(assistantThread) {
+            quitSafely()
+            join()
+        }
         assistantAudioManager.destroy()
     }
 
