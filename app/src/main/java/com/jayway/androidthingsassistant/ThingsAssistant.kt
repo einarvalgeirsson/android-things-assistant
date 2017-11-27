@@ -175,6 +175,7 @@ class ThingsAssistant(
     private fun setupAssistantResponseObserver() {
         assistantResponseObserver = object : StreamObserver<ConverseResponse> {
             override fun onNext(value: ConverseResponse) {
+                Log.d(TAG, "ConverseResponse: $value")
                 when (value.converseResponseCase) {
                     ConverseResponse.ConverseResponseCase.EVENT_TYPE -> {
                         if (value.eventType == ConverseResponse.EventType.END_OF_UTTERANCE) {
